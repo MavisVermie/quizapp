@@ -4,7 +4,8 @@ import 'answerbutton.dart';
 import 'data/questions.dart';
 import 'package:google_fonts/google_fonts.dart';
 class Questions extends StatefulWidget {
-  const Questions({super.key});
+  Questions(this.onSelectAnswer,{super.key});
+  Function(String answer) onSelectAnswer;
   @override
   State<Questions> createState() {
     return _QuestionsState();
@@ -13,11 +14,14 @@ class Questions extends StatefulWidget {
 
 class _QuestionsState extends State<Questions> {
   var questionindex=0;
-  void nextQuestion(){
+
+  void nextQuestion(String answer){
+    widget.onSelectAnswer(answer);
     setState(() {
       questionindex++;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     var currentQuestion = questions[questionindex];
@@ -53,7 +57,7 @@ class _QuestionsState extends State<Questions> {
               ),
               SizedBox(height: 20),
               ...currentQuestion.getShuffledAnswers().map((answerss) {
-                return AnswerButton(answerss, nextQuestion);
+                return AnswerButton(answerss, (){nextQuestion(answerss);});
               }),
             ],
           ),
