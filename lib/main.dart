@@ -3,7 +3,6 @@ import 'quiz.dart';
 
 void main(){
   runApp(
-    
     Quiz()
   );
 }
