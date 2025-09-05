@@ -5,6 +5,6 @@ class AnswerButton extends StatelessWidget{
   void Function() func;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(style:ElevatedButton.styleFrom(foregroundColor: Colors.white,backgroundColor: Colors.green), onPressed: func, child: Text(answer));
+    return ElevatedButton(style:ElevatedButton.styleFrom(foregroundColor: Colors.white,backgroundColor: Colors.green), onPressed: func, child: Text(answer, textAlign: TextAlign.center));
   }
 }
